@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chiyu Neko — Neko-OS Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet"/>
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --peach:   #FFDAB9;
+    --pink:    #FFB6C1;
+    --cream:   #FFF5EE;
+    --white:   #FFFFFF;
+    --blush:   #FFC8D3;
+    --orange:  #FF8C69;
+    --deep:    #5C3D2E;
+    --soft:    #8B5E6A;
+    --muted:   #C9929F;
+    --shadow:  rgba(255,140,105,0.18);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--deep);
+    overflow-x: hidden;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--peach); }
+  ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 99px; }
+
+  /* ── Shared ── */
+  .section {
+    padding: 80px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+
+  .cat-ears {
+    display: inline-block;
+    width: 54px;
+    height: 28px;
+    position: relative;
+    top: 4px;
+  }
+
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--deep);
+    letter-spacing: 0.5px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 99px;
+    background: var(--pink);
+    color: var(--deep);
+  }
+
+  .card {
+    background: white;
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 4px 32px var(--shadow);
+    border: 2px solid var(--peach);
+  }
+
+  /* ── Navbar ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,245,238,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--peach);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    color: var(--orange);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--soft);
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+
+  .nav-os-dot {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+  }
+
+  /* ── Hero ── */
+  .hero-wrapper {
+    background: linear-gradient(135deg, #fff0ea 0%, #ffe4f0 60%, #fff5ee 100%);
+    border-bottom: 2px solid var(--peach);
+    padding: 60px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255,140,105,0.12) 0%, transparent 70%);
+    top: -80px; right: -80px;
+    border-radius: 50%;
+  }
+
+  .hero-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(255,182,193,0.2) 0%, transparent 70%);
+    bottom: -60px; left: 60px;
+    border-radius: 50%;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 28px; height: 2px;
+    background: var(--orange);
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .hero-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    color: var(--deep);
+    margin-bottom: 8px;
+  }
+
+  .hero-name span { color: var(--orange); }
+
+  .hero-class {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero-bio {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--soft);
+    max-width: 420px;
+    margin-bottom: 28px;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--orange);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    padding: 12px 28px;
+    border-radius: 99px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(255,140,105,0.35);
+    letter-spacing: 0.5px;
+  }
+
+  .hero-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    color: var(--orange);
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    padding: 12px 28px;
+    border-radius: 99px;
+    text-decoration: none;
+    border: 2px solid var(--peach);
+    letter-spacing: 0.5px;
+    margin-left: 12px;
+  }
+
+  /* Character Card */
+  .char-card {
+    background: white;
+    border-radius: 32px;
+    padding: 32px;
+    box-shadow: 0 12px 60px var(--shadow);
+    border: 3px solid var(--peach);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .char-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--peach), var(--pink), var(--orange));
+    border-radius: 32px 32px 0 0;
+  }
+
+  .char-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--peach), var(--pink));
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    box-shadow: 0 4px 20px var(--shadow);
+    border: 3px solid white;
+  }
+
+  .char-name-card {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+
+  .char-role {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .level-bar-wrap {
+    margin-bottom: 20px;
+  }
+
+  .level-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--soft);
+    margin-bottom: 6px;
+  }
+
+  .level-bar {
+    height: 10px;
+    background: var(--cream);
+    border-radius: 99px;
+    overflow: hidden;
+    border: 1.5px solid var(--peach);
+  }
+
+  .level-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--peach), var(--orange));
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .stat-item {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 10px 8px;
+    text-align: center;
+    border: 1.5px solid var(--peach);
+  }
+
+  .stat-val {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--orange);
+  }
+
+  .stat-name {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── Section Header with Ears ── */
+  .ear-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .ear-icon {
+    font-size: 1.5rem;
+    background: var(--peach);
+    border-radius: 50%;
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  /* ── Inventory Grid ── */
+  .inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .inv-slot {
+    aspect-ratio: 1;
+    background: white;
+    border-radius: 20px;
+    border: 2.5px solid var(--peach);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  .inv-slot:hover {
+    transform: translateY(-4px);
+    border-color: var(--pink);
+    box-shadow: 0 8px 28px var(--shadow);
+  }
+
+  .inv-slot.featured {
+    border-color: var(--orange);
+    background: linear-gradient(135deg, #fff6f0, #fff0f5);
+  }
+
+  .inv-slot.empty {
+    background: var(--cream);
+    opacity: 0.5;
+  }
+
+  .inv-rarity {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+
+  .rarity-gold { background: #FFD700; box-shadow: 0 0 6px #FFD700; }
+  .rarity-silver { background: #C0C0C0; box-shadow: 0 0 6px #C0C0C0; }
+  .rarity-bronze { background: #CD7F32; box-shadow: 0 0 6px #CD7F32; }
+
+  .inv-emoji { font-size: 2.2rem; }
+  .inv-name { font-size: 0.68rem; font-weight: 800; text-align: center; color: var(--soft); line-height: 1.3; }
+  .inv-year { font-size: 0.6rem; font-weight: 600; color: var(--muted); }
+
+  /* ── Quest Log ── */
+  .quest-log {
+    background: white;
+    border-radius: 28px;
+    border: 2px solid var(--peach);
+    box-shadow: 0 4px 32px var(--shadow);
+    overflow: hidden;
+  }
+
+  .quest-header {
+    background: linear-gradient(90deg, var(--peach), #ffe0ec);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--peach);
+  }
+
+  .quest-header-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    color: var(--deep);
+  }
+
+  .quest-tabs {
+    display: flex;
+    gap: 8px;
+  }
+
+  .quest-tab {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 99px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .tab-active { background: var(--orange); color: white; }
+  .tab-inactive { background: white; color: var(--muted); border: 1.5px solid var(--peach); }
+
+  .quest-body { padding: 8px 0; }
+
+  .quest-item {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 28px;
+    border-bottom: 1.5px solid var(--cream);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+
+  .quest-item:hover { background: var(--cream); }
+  .quest-item:last-child { border-bottom: none; }
+
+  .quest-status-bubble {
+    width: 48px; height: 48px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .status-done { background: #d4f5e4; }
+  .status-active { background: #ffecd0; }
+  .status-upcoming { background: #e8e8ff; }
+
+  .quest-title { font-size: 0.92rem; font-weight: 800; color: var(--deep); margin-bottom: 3px; }
+  .quest-sub { font-size: 0.75rem; color: var(--muted); font-weight: 600; }
+
+  .quest-badge {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+
+  .badge-done { background: #d4f5e4; color: #2d7a55; }
+  .badge-active { background: #ffecd0; color: #c06a00; }
+  .badge-upcoming { background: #e8e8ff; color: #5050aa; }
+
+  /* ── Skill Tree ── */
+  .skill-tree {
+    background: white;
+    border-radius: 28px;
+    border: 2px solid var(--peach);
+    padding: 40px;
+    box-shadow: 0 4px 32px var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-tree::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 30%, rgba(255,218,185,0.25) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, rgba(255,182,193,0.2) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .skill-tree-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .skill-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .skill-node {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 3px solid var(--peach);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 16px var(--shadow);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .skill-node:hover {
+    border-color: var(--orange);
+    transform: scale(1.12);
+    box-shadow: 0 8px 28px rgba(255,140,105,0.3);
+  }
+
+  .skill-node.active {
+    border-color: var(--orange);
+    background: linear-gradient(135deg, var(--peach), #ffe0f0);
+    box-shadow: 0 0 0 4px rgba(255,140,105,0.2), 0 8px 28px var(--shadow);
+  }
+
+  .skill-level-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .skill-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--peach);
+  }
+
+  .skill-dot.filled { background: var(--orange); }
+
+  .skill-label { font-size: 0.78rem; font-weight: 800; color: var(--deep); text-align: center; }
+  .skill-sub { font-size: 0.65rem; font-weight: 600; color: var(--muted); text-align: center; }
+
+  .skill-connector {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--peach), transparent);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 0;
+  }
+
+  /* ── Guild ── */
+  .guild-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .guild-main {
+    background: white;
+    border-radius: 28px;
+    border: 2px solid var(--peach);
+    padding: 28px;
+    box-shadow: 0 4px 32px var(--shadow);
+  }
+
+  .guild-emblem {
+    width: 80px; height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+
+  .guild-name {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+
+  .guild-desc { font-size: 0.85rem; color: var(--soft); line-height: 1.7; }
+
+  .guild-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .g-stat {
+    text-align: center;
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 12px 8px;
+    border: 1.5px solid var(--peach);
+  }
+
+  .g-stat-val {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    color: var(--orange);
+  }
+
+  .g-stat-label { font-size: 0.62rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  .guild-activity {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .activity-card {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid var(--peach);
+    padding: 18px 20px;
+    box-shadow: 0 2px 12px var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .activity-icon {
+    font-size: 1.6rem;
+    background: var(--cream);
+    width: 44px; height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .activity-title { font-size: 0.85rem; font-weight: 800; color: var(--deep); }
+  .activity-sub { font-size: 0.73rem; color: var(--muted); font-weight: 600; }
+
+  /* ── Contact ── */
+  .contact-wrapper {
+    background: linear-gradient(135deg, #fff0ea, #ffe4f0);
+    border-top: 2px solid var(--peach);
+    padding: 80px 24px;
+  }
+
+  .letter-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: 0 8px 48px var(--shadow);
+    border: 2px solid var(--peach);
+    position: relative;
+  }
+
+  .letter-card::before {
+    content: '🐾';
+    position: absolute;
+    top: -18px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--peach);
+    border-radius: 50%;
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+
+  /* Washi tape corners */
+  .washi { position: absolute; width: 60px; height: 20px; border-radius: 4px; opacity: 0.7; }
+  .washi-tl { top: 12px; left: -8px; transform: rotate(-35deg); background: var(--pink); }
+  .washi-tr { top: 12px; right: -8px; transform: rotate(35deg); background: var(--peach); }
+  .washi-bl { bottom: 12px; left: -8px; transform: rotate(35deg); background: #b5e8d0; }
+  .washi-br { bottom: 12px; right: -8px; transform: rotate(-35deg); background: #c8d8ff; }
+
+  .letter-greeting {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--deep);
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .letter-sub { font-size: 0.82rem; color: var(--muted); text-align: center; margin-bottom: 28px; }
+
+  .form-field {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 6px;
+  }
+
+  .form-input {
+    width: 100%;
+    background: var(--cream);
+    border: 2px solid var(--peach);
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: var(--deep);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus { border-color: var(--pink); }
+
+  textarea.form-input { resize: vertical; min-height: 100px; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--orange);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    padding: 14px;
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(255,140,105,0.35);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 28px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 600;
+    border-top: 2px solid var(--peach);
+    background: var(--cream);
+  }
+
+  /* ── Animations ── */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(255,140,105,0.35); }
+    70% { box-shadow: 0 0 0 12px rgba(255,140,105,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,140,105,0); }
+  }
+
+  .float { animation: float 3.2s ease-in-out infinite; }
+  .pulse { animation: pulse-ring 2s infinite; }
+
+  /* Decorative stars */
+  .sparkle { position: absolute; pointer-events: none; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .inventory-grid { grid-template-columns: repeat(3, 1fr); }
+    .skill-tree-grid { grid-template-columns: repeat(2, 1fr); }
+    .guild-layout { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="nav-logo">
+    🐱 Neko<span style="color:var(--deep)">-OS</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#hero">Player Card</a></li>
+    <li><a href="#inventory">Inventory</a></li>
+    <li><a href="#quests">Quest Log</a></li>
+    <li><a href="#skills">Skill Tree</a></li>
+    <li><a href="#guild">Guild</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-os-dot">
+    <div class="dot" style="background:#FF6B6B"></div>
+    <div class="dot" style="background:#FFD93D"></div>
+    <div class="dot" style="background:#6BCB77"></div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 1 · HERO · THE PLAYER CARD
+═══════════════════════════════════════════════════ -->
+<section id="hero" class="hero-wrapper">
+  <!-- Decorative sparkles -->
+  <span class="sparkle" style="top:15%;left:8%;font-size:1.2rem;opacity:0.4">✦</span>
+  <span class="sparkle" style="top:70%;left:5%;font-size:0.8rem;opacity:0.3">✦</span>
+  <span class="sparkle" style="top:30%;right:15%;font-size:1.5rem;opacity:0.25">✦</span>
+  <span class="sparkle" style="top:80%;right:8%;font-size:0.9rem;opacity:0.35">✦</span>
+
+  <div class="hero-inner">
+    <!-- Left: Text -->
+    <div>
+      <div class="hero-badge">Character Select</div>
+      <h1 class="hero-name">Chiyu<br><span>Neko</span></h1>
+      <div class="hero-class">✦ Master Artificer &nbsp;·&nbsp; Level 13 &nbsp;·&nbsp; International Cosplayer ✦</div>
+      <p class="hero-bio">
+        A 13-year veteran of international cosplay stages — from The International (Dota 2) to Kelowna Comic Con. 
+        Materials Engineer by training, crafter by heart. I build worlds, one costume at a time. 🐾
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">
+        <span class="tag">Dota 2</span>
+        <span class="tag" style="background:var(--peach)">League of Legends</span>
+        <span class="tag" style="background:#e8d5ff">BG3</span>
+        <span class="tag" style="background:#d0f5e8">Monster Hunter</span>
+        <span class="tag" style="background:#ffe0d0">Transistor</span>
+      </div>
+      <a href="#inventory" class="hero-btn">🗡️ View Inventory</a>
+      <a href="#contact" class="hero-btn-ghost">📬 Send a Whisper</a>
+    </div>
+
+    <!-- Right: Character Card -->
+    <div style="display:flex;justify-content:center">
+      <div class="char-card float" style="width:100%;max-width:320px">
+        <!-- Cat ears on top -->
+        <div style="display:flex;justify-content:center;margin-bottom:-8px;position:relative;z-index:1">
+          <svg width="80" height="32" viewBox="0 0 80 32" fill="none">
+            <polygon points="4,32 18,2 32,32" fill="#FFB6C1"/>
+            <polygon points="8,32 18,8 28,32" fill="white" opacity="0.5"/>
+            <polygon points="48,32 62,2 76,32" fill="#FFB6C1"/>
+            <polygon points="52,32 62,8 72,32" fill="white" opacity="0.5"/>
+          </svg>
+        </div>
+
+        <!-- Top accent bar -->
+        <div style="height:5px;background:linear-gradient(90deg,var(--peach),var(--pink),var(--orange));border-radius:99px;margin-bottom:24px"></div>
+
+        <div class="char-avatar pulse">🐱</div>
+        <div class="char-name-card">Chiyu Neko</div>
+        <div class="char-role">Master Artificer · Materials Engineer</div>
+
+        <div class="level-bar-wrap">
+          <div class="level-label"><span>⚔️ Crafting Experience</span><span style="color:var(--orange)">LVL 13</span></div>
+          <div class="level-bar"><div class="level-fill" style="width:86%"></div></div>
+        </div>
+        <div class="level-bar-wrap">
+          <div class="level-label"><span>🛡️ International Stages</span><span style="color:var(--pink)">TI 2023 · 2024</span></div>
+          <div class="level-bar"><div class="level-fill" style="width:72%;background:linear-gradient(90deg,var(--pink),var(--blush))"></div></div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-val">99</div>
+            <div class="stat-name">Crafting</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">92</div>
+            <div class="stat-name">Technical</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">85</div>
+            <div class="stat-name">Community</div>
+          </div>
+        </div>
+
+        <!-- Footer bar -->
+        <div style="margin-top:18px;padding-top:14px;border-top:1.5px dashed var(--peach);display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:0.7rem;font-weight:800;color:var(--muted)">🏆 TI Hamburg Judge</span>
+          <span style="font-size:0.7rem;font-weight:800;color:var(--orange)">★ Featured Guest</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 2 · INVENTORY · PORTFOLIO
+═══════════════════════════════════════════════════ -->
+<div style="padding:80px 24px;max-width:1100px;margin:0 auto" id="inventory">
+  <div class="ear-header">
+    <div class="ear-icon">🎒</div>
+    <div>
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Section 02</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--deep)">The Inventory</div>
+    </div>
+    <div style="margin-left:auto">
+      <span class="tag">12 Items</span>
+    </div>
+  </div>
+
+  <div class="inventory-grid">
+    <!-- Slot 1 — Featured -->
+    <div class="inv-slot featured">
+      <div class="inv-rarity rarity-gold"></div>
+      <div class="inv-emoji">⚡</div>
+      <div class="inv-name">Skywrath Mage</div>
+      <div class="inv-year">TI 2023 · Top 4</div>
+    </div>
+
+    <!-- Slot 2 — Featured -->
+    <div class="inv-slot featured">
+      <div class="inv-rarity rarity-gold"></div>
+      <div class="inv-emoji">🌅</div>
+      <div class="inv-name">Dawnbreaker</div>
+      <div class="inv-year">TI 2024 · Top 10</div>
+    </div>
+
+    <!-- Slot 3 -->
+    <div class="inv-slot">
+      <div class="inv-rarity rarity-silver"></div>
+      <div class="inv-emoji">🗡️</div>
+      <div class="inv-name">Phantom Assassin</div>
+      <div class="inv-year">Full Armour Build</div>
+    </div>
+
+    <!-- Slot 4 -->
+    <div class="inv-slot">
+      <div class="inv-rarity rarity-silver"></div>
+      <div class="inv-emoji">🌊</div>
+      <div class="inv-name">Naga Siren</div>
+      <div class="inv-year">LED Edition</div>
+    </div>
+
+    <!-- Slot 5 -->
+    <div class="inv-slot">
+      <div class="inv-rarity rarity-bronze"></div>
+      <div class="inv-emoji">🔮</div>
+      <div class="inv-name">Crystal Maiden</div>
+      <div class="inv-year">Winter 2022</div>
+    </div>
+
+    <!-- Slot 6 -->
+    <div class="inv-slot">
+      <div class="inv-rarity rarity-bronze"></div>
+      <div class="inv-emoji">🌸</div>
+      <div class="inv-name">Seraphine</div>
+      <div class="inv-year">LoL · Stage Build</div>
+    </div>
+
+    <!-- Slot 7 -->
+    <div class="inv-slot">
+      <div class="inv-rarity rarity-bronze"></div>
+      <div class="inv-emoji">🎵</div>
+      <div class="inv-name">Transistor Red</div>
+      <div class="inv-year">Prop + Costume</div>
+    </div>
+
+    <!-- Slot 8 -->
+    <div class="inv-slot">
+      <div class="inv-rarity rarity-bronze"></div>
+      <div class="inv-emoji">🐉</div>
+      <div class="inv-name">Shadowheart</div>
+      <div class="inv-year">BG3 · 2024</div>
+    </div>
+
+    <!-- Slots 9–12 empty -->
+    <div class="inv-slot empty"><div style="font-size:1.8rem;opacity:0.3">＋</div><div class="inv-name" style="opacity:0.4">Coming Soon</div></div>
+    <div class="inv-slot empty"><div style="font-size:1.8rem;opacity:0.3">＋</div><div class="inv-name" style="opacity:0.4">Coming Soon</div></div>
+    <div class="inv-slot empty"><div style="font-size:1.8rem;opacity:0.3">＋</div><div class="inv-name" style="opacity:0.4">Coming Soon</div></div>
+    <div class="inv-slot empty"><div style="font-size:1.8rem;opacity:0.3">＋</div><div class="inv-name" style="opacity:0.4">Coming Soon</div></div>
+  </div>
+
+  <div style="margin-top:16px;font-size:0.75rem;color:var(--muted);font-weight:600;text-align:center">
+    🐾 Click any slot to open the full build gallery &amp; notes
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 3 · QUEST LOG · EXPERIENCE
+═══════════════════════════════════════════════════ -->
+<div style="background:linear-gradient(135deg,#fff8f5,#fff0f8);border-top:2px solid var(--peach);border-bottom:2px solid var(--peach);padding:80px 24px" id="quests">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="ear-header">
+      <div class="ear-icon">📖</div>
+      <div>
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Section 03</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--deep)">The Quest Log</div>
+      </div>
+    </div>
+
+    <div class="quest-log">
+      <div class="quest-header">
+        <div class="quest-header-title">📋 Active Quests & Achievements</div>
+        <div class="quest-tabs">
+          <span class="quest-tab tab-active">All</span>
+          <span class="quest-tab tab-inactive">Active</span>
+          <span class="quest-tab tab-inactive">Done</span>
+        </div>
+      </div>
+
+      <div class="quest-body">
+        <!-- Quest 1 -->
+        <div class="quest-item">
+          <div class="quest-status-bubble status-done">✅</div>
+          <div>
+            <div class="quest-title">The International — Hamburg</div>
+            <div class="quest-sub">Official SteelSeries Judge & Guest · Dota 2 World Championship</div>
+          </div>
+          <span class="quest-badge badge-done">Completed</span>
+        </div>
+
+        <!-- Quest 2 -->
+        <div class="quest-item">
+          <div class="quest-status-bubble status-active">⚔️</div>
+          <div>
+            <div class="quest-title">UVS Games — Riftbound Regional</div>
+            <div class="quest-sub">Official Riftbound Regional Cosplayer · Riot Games Partnership</div>
+          </div>
+          <span class="quest-badge badge-active">Active</span>
+        </div>
+
+        <!-- Quest 3 -->
+        <div class="quest-item">
+          <div class="quest-status-bubble status-upcoming">🌟</div>
+          <div>
+            <div class="quest-title">Kelowna Comic Con</div>
+            <div class="quest-sub">Featured Guest & Judge · Panel Speaker</div>
+          </div>
+          <span class="quest-badge badge-upcoming">Upcoming</span>
+        </div>
+
+        <!-- Quest 4 -->
+        <div class="quest-item">
+          <div class="quest-status-bubble status-done">🏆</div>
+          <div>
+            <div class="quest-title">TI 2023 — Skywrath Mage</div>
+            <div class="quest-sub">Top 4 Cosplay · Award-winning build with full armour fabrication</div>
+          </div>
+          <span class="quest-badge badge-done">Completed</span>
+        </div>
+
+        <!-- Quest 5 -->
+        <div class="quest-item">
+          <div class="quest-status-bubble status-done">🌅</div>
+          <div>
+            <div class="quest-title">TI 2024 — Dawnbreaker</div>
+            <div class="quest-sub">Top 10 Cosplay · LED-integrated hammer build</div>
+          </div>
+          <span class="quest-badge badge-done">Completed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 4 · SKILL TREE · TALENT MAP
+═══════════════════════════════════════════════════ -->
+<div style="padding:80px 24px;max-width:1100px;margin:0 auto" id="skills">
+  <div class="ear-header">
+    <div class="ear-icon">✨</div>
+    <div>
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Section 04</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--deep)">Technical Skill Tree</div>
+    </div>
+  </div>
+
+  <div class="skill-tree">
+    <div style="text-align:center;margin-bottom:32px">
+      <span style="font-size:0.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">
+        🐾 Hover nodes to inspect · Active skills glowing orange
+      </span>
+    </div>
+
+    <div class="skill-tree-grid">
+      <!-- Branch 1 -->
+      <div class="skill-branch">
+        <div class="skill-node active">🖥️</div>
+        <div class="skill-level-dots">
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+        </div>
+        <div class="skill-label">3D Modelling</div>
+        <div class="skill-sub">Blender · CAD · ZBrush</div>
+        <!-- Sub nodes -->
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--peach);background:white;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px var(--shadow)">🖨️</div>
+          <div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--peach);background:white;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px var(--shadow)">📐</div>
+        </div>
+        <div class="skill-sub" style="margin-top:4px">3D Print · CAD Files</div>
+      </div>
+
+      <!-- Branch 2 -->
+      <div class="skill-branch">
+        <div class="skill-node active">⚡</div>
+        <div class="skill-level-dots">
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot"></div>
+        </div>
+        <div class="skill-label">Electronics</div>
+        <div class="skill-sub">LEDs · Arduino · Wiring</div>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--peach);background:white;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px var(--shadow)">💡</div>
+          <div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--peach);background:white;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px var(--shadow)">🔌</div>
+        </div>
+        <div class="skill-sub" style="margin-top:4px">RGB · NeoPixel · Power</div>
+      </div>
+
+      <!-- Branch 3 -->
+      <div class="skill-branch">
+        <div class="skill-node active">🧪</div>
+        <div class="skill-level-dots">
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+        </div>
+        <div class="skill-label">Materials Science</div>
+        <div class="skill-sub">Engineering Degree</div>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--peach);background:white;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px var(--shadow)">🪨</div>
+          <div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--peach);background:white;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px var(--shadow)">🔬</div>
+        </div>
+        <div class="skill-sub" style="margin-top:4px">Foam · Resin · Thermoplastic</div>
+      </div>
+
+      <!-- Branch 4 -->
+      <div class="skill-branch">
+        <div class="skill-node active">🛠️</div>
+        <div class="skill-level-dots">
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot filled"></div>
+          <div class="skill-dot"></div>
+        </div>
+        <div class="skill-label">Advanced Fabrication</div>
+        <div class="skill-sub">Props · Armour · Textiles</div>
+        <div style="display:flex;gap:10px;margin-top:8px">
+          <div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--peach);background:white;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px var(--shadow)">🪡</div>
+          <div style="width:36px;height:36px;border-radius:50%;border:2px solid var(--peach);background:white;display:flex;align-items:center;justify-content:center;font-size:1rem;box-shadow:0 2px 8px var(--shadow)">🎨</div>
+        </div>
+        <div class="skill-sub" style="margin-top:4px">Sewing · Painting · Airbrushing</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 5 · GUILD · COMMUNITY
+═══════════════════════════════════════════════════ -->
+<div style="background:linear-gradient(135deg,#fff8f5,#fff0f8);border-top:2px solid var(--peach);border-bottom:2px solid var(--peach);padding:80px 24px" id="guild">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="ear-header">
+      <div class="ear-icon">🏰</div>
+      <div>
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Section 05</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--deep)">The Guild</div>
+      </div>
+    </div>
+
+    <div class="guild-layout">
+      <!-- Main Guild Card -->
+      <div class="guild-main">
+        <div class="guild-emblem">🩸</div>
+        <div class="guild-name">Crimson Witnesses</div>
+        <div style="font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Dota 2 · Community Guild</div>
+        <div class="guild-desc">
+          A passionate Dota 2 community built around shared love for competitive play, esports culture, 
+          and the game's incredible world. From Discord strategy to in-person tournament activations, 
+          Crimson Witnesses is home.
+        </div>
+
+        <div class="guild-stat-row">
+          <div class="g-stat">
+            <div class="g-stat-val">3K+</div>
+            <div class="g-stat-label">Members</div>
+          </div>
+          <div class="g-stat">
+            <div class="g-stat-val">Admin</div>
+            <div class="g-stat-label">My Role</div>
+          </div>
+          <div class="g-stat">
+            <div class="g-stat-val">5+</div>
+            <div class="g-stat-label">Events</div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap">
+          <span class="tag">Discord Strategy</span>
+          <span class="tag" style="background:var(--peach)">In-Person Events</span>
+          <span class="tag" style="background:#d0f5e8">Esports Activations</span>
+        </div>
+      </div>
+
+      <!-- Activity Feed -->
+      <div class="guild-activity">
+        <div style="font-family:'Fredoka One',cursive;font-size:1rem;color:var(--deep);margin-bottom:4px">Recent Activity</div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🎮</div>
+          <div>
+            <div class="activity-title">Riftbound Regional Watch Party</div>
+            <div class="activity-sub">Hosted community viewing event · 200+ in attendance</div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">📡</div>
+          <div>
+            <div class="activity-title">Discord Community Revamp</div>
+            <div class="activity-sub">New channels, roles & onboarding flow for 3,000+ members</div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🏆</div>
+          <div>
+            <div class="activity-title">TI Hamburg Community Meetup</div>
+            <div class="activity-sub">Organized member gathering at The International</div>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🎤</div>
+          <div>
+            <div class="activity-title">Esports Panel — Kelowna Con</div>
+            <div class="activity-sub">Speaking on community building in competitive gaming</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     SECTION 6 · CONTACT · SEND A WHISPER
+═══════════════════════════════════════════════════ -->
+<div class="contact-wrapper" id="contact">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="ear-header" style="justify-content:center">
+      <div class="ear-icon">📬</div>
+      <div style="text-align:center">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Section 06</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--deep)">Send a Whisper</div>
+      </div>
+    </div>
+
+    <div class="letter-card">
+      <!-- Washi tape -->
+      <div class="washi washi-tl"></div>
+      <div class="washi washi-tr"></div>
+      <div class="washi washi-bl"></div>
+      <div class="washi washi-br"></div>
+
+      <div style="margin-top:12px">
+        <div class="letter-greeting">Dear Chiyu Neko ✉️</div>
+        <div class="letter-sub">For collaborations, judging invites, guest appearances, or just to say hi 🐱</div>
+
+        <div class="form-field">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="e.g. Phantom Assassin" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Your Email</label>
+          <input class="form-input" type="email" placeholder="your@email.com" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Subject</label>
+          <input class="form-input" type="text" placeholder="e.g. Judging Invitation — Anime Expo 2026" />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Your Message</label>
+          <textarea class="form-input" placeholder="Write your message here..."></textarea>
+        </div>
+
+        <button class="submit-btn">
+          🐾 Send Whisper
+        </button>
+
+        <div style="margin-top:16px;text-align:center;font-size:0.75rem;font-weight:700;color:var(--muted)">
+          Or reach me on
+          <a href="#" style="color:var(--orange);text-decoration:none">Instagram</a> ·
+          <a href="#" style="color:var(--orange);text-decoration:none">Twitter/X</a> ·
+          <a href="#" style="color:var(--orange);text-decoration:none">Discord</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── Footer ── -->
+<footer>
+  <div style="font-family:'Fredoka One',cursive;font-size:1rem;color:var(--orange);margin-bottom:6px">🐱 Neko-OS v1.0</div>
+  <div>© 2026 Chiyu Neko · Master Artificer · All rights reserved</div>
+  <div style="margin-top:6px;font-size:0.7rem;opacity:0.6">Crafted with 🧡 and way too much thermoplastic foam</div>
+</footer>
+
+</body>
+</html>
