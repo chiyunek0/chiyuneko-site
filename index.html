@@ -72,7 +72,7 @@
       <div class="char-card float" style="width:100%;max-width:320px">
 
         <!-- Cat ears SVG decoration -->
-        <div style="display:flex;justify-content:center;margin-bottom:-8px;position:relative;z-index:1">
+        <div style="display:flex;justify-content:center;margin-bottom:-3px;position:relative;z-index:1">
           <svg width="80" height="32" viewBox="0 0 80 32" fill="none" aria-hidden="true">
             <polygon points="4,32 18,2 32,32"  fill="#FFB6C1"/>
             <polygon points="8,32 18,8 28,32"  fill="white" opacity="0.5"/>
@@ -90,15 +90,15 @@
           Recommended: 400×400px, square crop, .webp or .jpg
         -->
         <div class="char-avatar pulse">
-          <!-- PLACEHOLDER: swap emoji for <img> tag -->
-          🐱
+          <img src="public/images/D2_hoodwink.jpg">
         </div>
 
         <div class="char-name-card">Chiyu Neko</div>
         <div class="char-role">Master Artificer · Materials Engineer</div>
 
+        <!-- EXP BAR FOR WRAPPY. -->
         <div class="level-bar-wrap">
-          <div class="level-label">
+          <!-- <div class="level-label">
             <span>⚔️ Crafting Experience</span>
             <span style="color:var(--orange)">LVL 13</span>
           </div>
@@ -109,13 +109,14 @@
             <span>🛡️ International Stages</span>
             <span style="color:var(--pink)">TI 2023 · 2024</span>
           </div>
-          <div class="level-bar"><div class="level-fill" style="width:72%;background:linear-gradient(90deg,var(--pink),var(--blush))"></div></div>
+          <div class="level-bar"><div class="level-fill" style="width:72%;background:linear-gradient(90deg,var(--pink),var(--blush))"></div></div> 
+          -->
         </div>
 
         <div class="stat-grid">
-          <div class="stat-item"><div class="stat-val">99</div><div class="stat-name">Crafting</div></div>
-          <div class="stat-item"><div class="stat-val">92</div><div class="stat-name">Technical</div></div>
-          <div class="stat-item"><div class="stat-val">85</div><div class="stat-name">Community</div></div>
+          <div class="stat-item"><div class="stat-val">92</div><div class="stat-name">Crafting</div></div>
+          <div class="stat-item"><div class="stat-val">95</div><div class="stat-name">Technical</div></div>
+          <div class="stat-item"><div class="stat-val">98</div><div class="stat-name">Community</div></div>
         </div>
 
         <div style="margin-top:18px;padding-top:14px;border-top:1.5px dashed var(--peach);display:flex;justify-content:space-between;align-items:center">
@@ -166,51 +167,60 @@
   <div class="inventory-grid">
 
     <!-- Slot 1 · Skywrath Mage (GOLD) -->
-    <!-- IMAGE: public/images/builds/skywrath-mage.jpg -->
     <div class="inv-slot featured"
          data-name="Skywrath Mage"
          data-note="TI 2023 · Top 4 — Full armour build with LED-lit wings and custom prop staff">
-      <div class="inv-rarity rarity-gold"></div>
-      <div class="inv-emoji">⚡</div>
-      <div class="inv-name">Skywrath Mage</div>
-      <div class="inv-year">TI 2023 · Top 4</div>
+      <img src="public/images/D2_skywrath.jpg">
+      <div class="inv-slot overlay">
+        <div class="inv-rarity rarity-gold"></div>
+        <div class="inv-emoji">⚡</div>
+        <div class="inv-name">Skywrath Mage</div>
+        <div class="inv-year">TI 2023 · Top 4</div>
+      </div>
+      
+
     </div>
 
     <!-- Slot 2 · Dawnbreaker (GOLD) -->
-    <!-- IMAGE: public/images/builds/dawnbreaker.jpg -->
     <div class="inv-slot featured"
          data-name="Dawnbreaker"
          data-note="TI 2024 · Top 10 — LED-integrated hammer, full foam & thermoplastic armour">
-      <div class="inv-rarity rarity-gold"></div>
-      <div class="inv-emoji">🌅</div>
-      <div class="inv-name">Dawnbreaker</div>
-      <div class="inv-year">TI 2024 · Top 10</div>
-    </div>
+      <img src="public/images/D2_dawnbreaker.jpg">
+        <div class="inv-slot overlay">
+          <div class="inv-rarity rarity-gold"></div>
+          <div class="inv-emoji">🌅</div>
+          <div class="inv-name">Dawnbreaker</div>
+          <div class="inv-year">TI 2024 · Top 10</div>
+        </div>
+      </div>
 
     <!-- Slot 3 · Phantom Assassin (SILVER) -->
-    <!-- IMAGE: public/images/builds/phantom-assassin.jpg -->
-    <div class="inv-slot"
-         data-name="Phantom Assassin"
-         data-note="Full armour build — hand-painted EVA foam plate armour with twin daggers">
-      <div class="inv-rarity rarity-silver"></div>
-      <div class="inv-emoji">🗡️</div>
-      <div class="inv-name">Phantom Assassin</div>
-      <div class="inv-year">Full Armour Build</div>
+    <div class="inv-slot featured"
+         data-name="WindRanger"
+         data-note="Flowing build with full armaments.">
+      <img src="public/images/D2_windrunner.jpg">
+      <div class="inv-slot overlay">
+        <div class="inv-rarity rarity-silver"></div>
+        <div class="inv-emoji">🏹</div>
+        <div class="inv-name">WindRanger</div>
+        <div class="inv-year">ESL One Birmingham</div>
+      </div> 
     </div>
 
-    <!-- Slot 4 · Naga Siren (SILVER) -->
-    <!-- IMAGE: public/images/builds/naga-siren.jpg -->
+    <!-- Slot 4 · Mina (SILVER) -->
     <div class="inv-slot"
-         data-name="Naga Siren"
-         data-note="LED Edition — NeoPixel lighting integrated throughout the tail and armour">
-      <div class="inv-rarity rarity-silver"></div>
-      <div class="inv-emoji">🌊</div>
-      <div class="inv-name">Naga Siren</div>
-      <div class="inv-year">LED Edition</div>
+         data-name="Mina Ha"
+         data-note="Bunny Girl Mina">
+      <img src="public/images/DL_mina.jpg">
+      <div class="inv-slot overlay">
+        <div class="inv-rarity rarity-silver"></div>
+        <div class="inv-emoji">🧛</div>
+        <div class="inv-name">Mina Ha</div>
+        <div class="inv-year">SOME TEXT HERE. SOMETHING SOMETHING.</div>
+      </div> 
     </div>
 
     <!-- Slot 5 · Crystal Maiden (BRONZE) -->
-    <!-- IMAGE: public/images/builds/crystal-maiden.jpg -->
     <div class="inv-slot"
          data-name="Crystal Maiden"
          data-note="Winter 2022 — Sheer fabric layering with resin ice-crystal accessories">
@@ -221,7 +231,6 @@
     </div>
 
     <!-- Slot 6 · Seraphine (BRONZE) -->
-    <!-- IMAGE: public/images/builds/seraphine.jpg -->
     <div class="inv-slot"
          data-name="Seraphine"
          data-note="LoL · Stage Build — Performance-ready with functioning light-up microphone prop">
@@ -232,7 +241,6 @@
     </div>
 
     <!-- Slot 7 · Transistor Red (BRONZE) -->
-    <!-- IMAGE: public/images/builds/transistor-red.jpg -->
     <div class="inv-slot"
          data-name="Transistor Red"
          data-note="Prop + Costume — Full-scale Transistor sword replica with embedded electronics">
@@ -243,7 +251,6 @@
     </div>
 
     <!-- Slot 8 · Shadowheart (BRONZE) -->
-    <!-- IMAGE: public/images/builds/shadowheart.jpg -->
     <div class="inv-slot"
          data-name="Shadowheart"
          data-note="BG3 · 2024 — Hand-stitched costume with resin-cast shield and circlet">
