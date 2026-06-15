@@ -141,29 +141,7 @@
       <div style="font-size:0.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:2px">Section 02</div>
       <div style="font-family:'Fredoka One',cursive;font-size:1.9rem;color:var(--deep)">The Inventory</div>
     </div>
-    <div style="margin-left:auto"><span class="tag">12 Items</span></div>
   </div>
-
-  <!--
-    HOW TO ADD REAL IMAGES TO INVENTORY SLOTS:
-    1. Drop your photo into public/images/builds/
-    2. Add class="has-image" to the .inv-slot div
-    3. Add data-image="public/images/builds/your-file.jpg" to the slot
-    4. Wrap .inv-name and .inv-year in a <div class="inv-overlay"> inside the slot
-    5. Remove the .inv-emoji div (or keep it as fallback)
-
-    Example:
-    <div class="inv-slot featured has-image"
-         data-name="Skywrath Mage"
-         data-note="TI 2023 · Top 4 — Full armour with LED wings"
-         data-image="public/images/builds/skywrath-mage.jpg">
-      <div class="inv-rarity rarity-gold"></div>
-      <div class="inv-overlay">
-        <div class="inv-name">Skywrath Mage</div>
-        <div class="inv-year">TI 2023 · Top 4</div>
-      </div>
-    </div>
-  -->
 
   <div class="inventory-grid">
 
@@ -172,39 +150,37 @@
          data-name="Skywrath Mage"
          data-note="TI 2023 · Top 4 — Full armour build with LED-lit wings and custom prop staff">
       <img src="public/images/D2_skywrath.jpg">
+      <div class="inv-rarity rarity-gold"></div>
       <div class="inv-slot overlay">
-        <div class="inv-rarity rarity-gold"></div>
         <div class="inv-emoji">⚡</div>
         <div class="inv-name">Skywrath Mage</div>
         <div class="inv-year">TI 2023 · Top 4</div>
       </div>
-      
-
     </div>
 
     <!-- Slot 2 · Dawnbreaker (GOLD) -->
-    <div class="inv-slot featured"
+    <div class="inv-slot"
          data-name="Dawnbreaker"
          data-note="TI 2024 · Top 10 — LED-integrated hammer, full foam & thermoplastic armour">
       <img src="public/images/D2_dawnbreaker.jpg">
-        <div class="inv-slot overlay">
-          <div class="inv-rarity rarity-gold"></div>
-          <div class="inv-emoji">🌅</div>
-          <div class="inv-name">Dawnbreaker</div>
-          <div class="inv-year">TI 2024 · Top 10</div>
-        </div>
+      <div class="inv-rarity rarity-gold"></div>
+      <div class="inv-slot overlay">
+        <div class="inv-emoji">🌅</div>
+        <div class="inv-name">Dawnbreaker</div>
+        <div class="inv-year">TI 2024 · Top 10</div>
+      </div>
       </div>
 
-    <!-- Slot 3 · Phantom Assassin (SILVER) -->
-    <div class="inv-slot featured"
+    <!-- Slot 3 · Wind Ranger (SILVER) -->
+    <div class="inv-slot"
          data-name="WindRanger"
          data-note="Flowing build with full armaments.">
       <img src="public/images/D2_windrunner.jpg">
+      <div class="inv-rarity rarity-silver"></div>
       <div class="inv-slot overlay">
-        <div class="inv-rarity rarity-silver"></div>
         <div class="inv-emoji">🏹</div>
         <div class="inv-name">WindRanger</div>
-        <div class="inv-year">ESL One Birmingham</div>
+        <div class="inv-year">ESL One Birmingham 2025</div>
       </div> 
     </div>
 
@@ -213,55 +189,17 @@
          data-name="Mina Ha"
          data-note="Bunny Girl Mina">
       <img src="public/images/DL_mina.jpg">
+      <div class="inv-rarity rarity-silver"></div>
       <div class="inv-slot overlay">
-        <div class="inv-rarity rarity-silver"></div>
         <div class="inv-emoji">🧛</div>
         <div class="inv-name">Mina Ha</div>
-        <div class="inv-year">SOME TEXT HERE. SOMETHING SOMETHING.</div>
+        <div class="inv-year">OtaFest 2026</div>
       </div> 
     </div>
 
-    <!-- Slot 5 · Crystal Maiden (BRONZE) -->
-    <div class="inv-slot"
-         data-name="Crystal Maiden"
-         data-note="Winter 2022 — Sheer fabric layering with resin ice-crystal accessories">
-      <div class="inv-rarity rarity-bronze"></div>
-      <div class="inv-emoji">🔮</div>
-      <div class="inv-name">Crystal Maiden</div>
-      <div class="inv-year">Winter 2022</div>
-    </div>
+    <!-- ADD MORE HERE. -->
 
-    <!-- Slot 6 · Seraphine (BRONZE) -->
-    <div class="inv-slot"
-         data-name="Seraphine"
-         data-note="LoL · Stage Build — Performance-ready with functioning light-up microphone prop">
-      <div class="inv-rarity rarity-bronze"></div>
-      <div class="inv-emoji">🌸</div>
-      <div class="inv-name">Seraphine</div>
-      <div class="inv-year">LoL · Stage Build</div>
-    </div>
-
-    <!-- Slot 7 · Transistor Red (BRONZE) -->
-    <div class="inv-slot"
-         data-name="Transistor Red"
-         data-note="Prop + Costume — Full-scale Transistor sword replica with embedded electronics">
-      <div class="inv-rarity rarity-bronze"></div>
-      <div class="inv-emoji">🎵</div>
-      <div class="inv-name">Transistor Red</div>
-      <div class="inv-year">Prop + Costume</div>
-    </div>
-
-    <!-- Slot 8 · Shadowheart (BRONZE) -->
-    <div class="inv-slot"
-         data-name="Shadowheart"
-         data-note="BG3 · 2024 — Hand-stitched costume with resin-cast shield and circlet">
-      <div class="inv-rarity rarity-bronze"></div>
-      <div class="inv-emoji">🐉</div>
-      <div class="inv-name">Shadowheart</div>
-      <div class="inv-year">BG3 · 2024</div>
-    </div>
-
-    <!-- Slots 9–12 · Coming Soon (empty) -->
+    <!-- Slot Empty -- Coming Soon -->
     <div class="inv-slot empty"><div style="font-size:1.8rem;opacity:0.3">＋</div><div class="inv-name" style="opacity:0.4">Coming Soon</div></div>
     <div class="inv-slot empty"><div style="font-size:1.8rem;opacity:0.3">＋</div><div class="inv-name" style="opacity:0.4">Coming Soon</div></div>
     <div class="inv-slot empty"><div style="font-size:1.8rem;opacity:0.3">＋</div><div class="inv-name" style="opacity:0.4">Coming Soon</div></div>
