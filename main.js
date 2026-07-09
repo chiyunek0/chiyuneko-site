@@ -2,6 +2,7 @@
    Chiyu Neko — Neko-OS Portfolio
    main.js
    ══════════════════════════════════════════════════ */
+/* NODE STUFF */
 
 /* ── Quest Log Tab Filtering ── */
 function initQuestTabs() {
